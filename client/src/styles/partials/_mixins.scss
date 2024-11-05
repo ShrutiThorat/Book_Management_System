@@ -1,0 +1,52 @@
+@use './common';
+@use './theme';
+
+@mixin circularShape {
+  background-color: $secondaryTextColor;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 3px;
+}
+@mixin commonButton {
+  color: $white;
+  min-width: 120px;
+  max-width: 150px;
+  height: 24px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: $boxShadow;
+  text-transform: none;
+}
+@mixin controlButton {
+  @include commonButton;
+  background: linear-gradient(
+    180deg,
+    $primaryTextColor 30%,
+    $secondaryThemeColor 90%
+  );
+  &.Mui-disabled {
+    background: $grayMedium;
+    opacity: 0.8;
+    color: $grayLight;
+  }
+  &.alternate {
+    background: linear-gradient(
+      180deg,
+      $primaryTextColor 30%,
+      $primaryThemeColor 90%
+    );
+  }
+}
+@mixin cancelButton {
+  @include commonButton;
+  background: $white;
+  color: $primaryTextColor;
+  box-shadow: none;
+  border: 1px solid $grayMedium;
+  &:hover {
+    background: $grayMedium;
+    color: $white;
+  }
+}

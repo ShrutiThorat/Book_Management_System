@@ -1,0 +1,33 @@
+@use '../styles/partials/theme' as theme;
+@use '../styles/partials/common' as common;
+
+.mainWrapper {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+      180deg,
+      theme.$graySuperLight 10%,
+      theme.$primaryThemeColor 90%
+    );
+    padding: 0 min(20px, 1%) 20px;
+    box-sizing: border-box;
+    position: relative;
+    .mainHeader {
+        height: 36px;
+      }
+      .mainMenu {
+        position: fixed;
+        height: 60px;
+        width: 30%;
+        top: 15px;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+      .mainContent{
+        height: calc(100% - 36px);
+        background-color: theme.$white;
+        box-shadow: common.$boxShadow;
+        border-radius: 10px;
+        border: 1px solid theme.$graySuperLight;
+      }
+}
