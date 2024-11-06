@@ -1,5 +1,5 @@
 import './Menu.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Grid from '@mui/material/Grid2';
@@ -13,6 +13,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 const Menu = () => {
   const navigate = useNavigate();
   const [selectedIndex, setSelectedIndex] = useState(1);
+
   const navigationData = [
     {
       index: 1,
@@ -33,7 +34,7 @@ const Menu = () => {
       link: 'about-us',
       page: 'About Us',
       icon: <InfoIcon />,
-      disabled: false,
+      disabled: true,
     },
     {
       index: 4,
@@ -44,12 +45,32 @@ const Menu = () => {
     },
   ];
 
+  useEffect(() => {
+    let pathFull = window?.location?.hash;
+    if (pathFull?.length) {
+      let splitPath = pathFull.split('/');
+      if (splitPath?.length >= 3) {
+        let lastPath = splitPath[splitPath.length - 2];
+        if (lastPath?.length) {
+          let pathInfo = navigationData.find((item) => item.link === lastPath);
+          setSelectedIndex(pathInfo?.index || 1);
+        }
+      } else {
+        let lastPath = splitPath[splitPath.length - 1];
+        if (lastPath?.length) {
+          let pathInfo = navigationData.find((item) => item.link === lastPath);
+          setSelectedIndex(pathInfo?.index || 1);
+        }
+      }
+    }
+  }, []);
+
   const handleListItemClick = (disabled, index, link) => {
     if (!disabled)
       if (selectedIndex !== index) {
         setSelectedIndex(index);
         navigate(`/${link}`);
-        props.resetRedirect(link);
+        // props.resetRedirect(link);
       }
   };
 

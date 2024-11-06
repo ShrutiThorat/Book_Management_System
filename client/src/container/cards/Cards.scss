@@ -1,0 +1,38 @@
+@use '../../styles/partials/theme' as theme;
+@use '../../styles/partials/mixins' as *;
+
+.cardsSection{
+    padding: 10px;
+    height: calc(100% - 110px);
+
+    .cardContainer{
+        padding: 5px;
+        overflow-y: scroll;
+        height: 100%;
+        .card{
+            background-color: theme.$graySuperLight;
+            .cardMedia{
+                width: 150px;
+                margin: auto;
+            }
+            .cardContent{
+                padding: 10px;
+            }
+            .bookName{
+                font-weight: 700;
+                color: theme.$blueDark;
+                font-size: 15px;
+            }
+            .subTitles{
+                font-size: 13px;
+                color: theme.$primaryTextColor;
+                .subHead{
+                    font-weight: 700;
+                }
+            }
+            .actionButton{
+                @include commonButton;
+            }
+        }
+    }
+}

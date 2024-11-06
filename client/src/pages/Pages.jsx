@@ -1,12 +1,12 @@
 import './Pages.scss';
 import { lazy, Suspense } from 'react';
-// import Menu from '../container/menu/Menu';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Menu = lazy(() => import('../container/menu/Menu'));
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
@@ -15,9 +15,7 @@ const AllBooks = lazy(() => import('../pages/allBooks/AllBooks'));
 const Pages = () => {
   return (
     <div className='mainWrapper'>
-      <div className='mainHeader'>
-        {/* <Header setAsAdmin={(value) => setAdminView(value)} /> */}
-      </div>
+      <div className='mainHeader'></div>
       <div className='mainMenu'>
         <Menu />
       </div>
@@ -27,41 +25,18 @@ const Pages = () => {
           <Route
             path='/dashboard'
             element={
-              <Suspense
-                fallback={
-                  <div className='suspenseLoaderIcon'>
-                    {/* <img src={AnalysisIcon} /> */}
-                  </div>
-                }
-              >
-                <Dashboard
-                //   access={userConfig}
-                //   changeActiveMenu={modifyMenuView}
-                />
+              <Suspense fallback={<div className='suspenseLoaderIcon'></div>}>
+                <Dashboard />
               </Suspense>
             }
           />
-          {/* <Route
-            path='/log-analysis/:mode?/:id?'
-            element={
-              <Suspense
-                fallback={
-                  <div className='suspenseLoaderIcon'>
-                    <img src={AnalysisIcon} />
-                  </div>
-                }
-              >
-                <LogAnalysis access={userConfig} fileLimits={fileInputLimit} />
-              </Suspense>
-            }
-          /> */}
           <Route
             path='/all-books'
             element={
               <Suspense
                 fallback={
                   <div className='suspenseLoaderIcon'>
-                    {/* <img src={AnalysisIcon} /> */}
+                    <CircularProgress style={{ marginTop: '300px' }} />
                   </div>
                 }
               >
@@ -76,12 +51,10 @@ const Pages = () => {
               <Suspense
                 fallback={
                   <div className='suspenseLoaderIcon'>
-                    {/* <img src={AnalysisIcon} /> */}
+                    <CircularProgress style={{ marginTop: '300px' }} />
                   </div>
                 }
-              >
-                {/* <Settings /> */}
-              </Suspense>
+              ></Suspense>
             }
           />
           <Route
@@ -90,12 +63,10 @@ const Pages = () => {
               <Suspense
                 fallback={
                   <div className='suspenseLoaderIcon'>
-                    {/* <img src={AnalysisIcon} /> */}
+                    <CircularProgress style={{ marginTop: '300px' }} />
                   </div>
                 }
-              >
-                {/* <Settings /> */}
-              </Suspense>
+              ></Suspense>
             }
           />
         </Routes>
