@@ -1,52 +1,38 @@
-@use './common';
-@use './theme';
+@use './common' as common;
+@use './theme' as theme;
 
-@mixin circularShape {
-  background-color: $secondaryTextColor;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin: 0 3px;
-}
 @mixin commonButton {
-  color: $white;
-  min-width: 120px;
+  min-width: 80px;
   max-width: 150px;
   height: 24px;
   border-radius: 10px;
   font-size: 12px;
   font-weight: 700;
-  box-shadow: $boxShadow;
+  box-shadow: common.$boxShadow;
   text-transform: none;
+  &:hover {
+    background: theme.$grayMedium;
+    color: theme.$white;
+  }
 }
 @mixin controlButton {
   @include commonButton;
+  color: theme.$white;
   background: linear-gradient(
     180deg,
-    $primaryTextColor 30%,
-    $secondaryThemeColor 90%
+    theme.$primaryTextColor 30%,
+    theme.$primaryIconColor 90%
   );
   &.Mui-disabled {
-    background: $grayMedium;
+    background: theme.$grayMedium;
     opacity: 0.8;
-    color: $grayLight;
+    color: theme.$grayLight;
   }
   &.alternate {
     background: linear-gradient(
       180deg,
-      $primaryTextColor 30%,
-      $primaryThemeColor 90%
+      theme.$primaryTextColor 30%,
+      theme.$primaryThemeColor 90%
     );
-  }
-}
-@mixin cancelButton {
-  @include commonButton;
-  background: $white;
-  color: $primaryTextColor;
-  box-shadow: none;
-  border: 1px solid $grayMedium;
-  &:hover {
-    background: $grayMedium;
-    color: $white;
   }
 }

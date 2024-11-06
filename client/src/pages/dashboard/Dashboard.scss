@@ -1,4 +1,14 @@
 .dashboardMain{
     height: calc(100% - 50px);
     padding-top: 50px;
+    .dashboardArea{
+        margin: 30px 10px;
+        .welcomeMessage{
+            font-weight: 700;
+            font-size: 45px;
+        }
+        .subTitle{
+            font-size: 20px;
+        }
+    }
 }
